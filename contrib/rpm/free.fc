@@ -1,0 +1,8 @@
+/usr/bin/free-cli		--	gen_context(system_u:object_r:free_exec_t,s0)
+/usr/sbin/freed		--	gen_context(system_u:object_r:free_exec_t,s0)
+/usr/lib(64)?/free/freed		--	gen_context(system_u:object_r:free_exec_t,s0)
+
+/etc/free(/.*)?		gen_context(system_u:object_r:free_conf_t,s0)
+/var/lib/free(/.*)?		gen_context(system_u:object_r:free_var_lib_t,s0)
+
+(/var)?/run/freed(/.*)?   gen_context(system_u:object_r:free_var_run_t,s0)

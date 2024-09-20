@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Free Core
+Comment=Connect to the Free P2P Network
+Comment[de]=Verbinde mit dem Free peer-to-peer Netzwerk
+Comment[fr]=Free, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Free, eşten eşe kriptografik sanal para birimi
+Exec=free-qt %u
+Terminal=false
+Type=Application
+Icon=free128
+MimeType=x-scheme-handler/free;
+Categories=Office;Finance;

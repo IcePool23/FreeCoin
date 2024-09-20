@@ -1,0 +1,81 @@
+policy_module(free, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type free_t;
+type free_exec_t;
+init_daemon_domain(free_t, free_exec_t)
+
+permissive free_t;
+
+type free_initrc_exec_t;
+init_script_file(free_initrc_exec_t)
+
+type free_conf_t;
+files_type(free_conf_t)
+
+type free_var_lib_t;
+files_type(free_var_lib_t)
+
+type free_var_run_t;
+files_type(free_var_run_t)
+
+type free_port_t;
+corenet_port(free_port_t)
+
+########################################
+#
+# free local policy
+#
+allow free_t self:process { fork };
+
+allow free_t self:fifo_file rw_fifo_file_perms;
+allow free_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(free_t, free_conf_t, free_conf_t)
+manage_files_pattern(free_t, free_conf_t, free_conf_t)
+
+manage_dirs_pattern(free_t, free_var_lib_t, free_var_lib_t)
+manage_files_pattern(free_t, free_var_lib_t, free_var_lib_t)
+files_var_lib_filetrans(free_t, free_var_lib_t, { dir file })
+
+manage_dirs_pattern(free_t, free_var_run_t, free_var_run_t)
+manage_files_pattern(free_t, free_var_run_t, free_var_run_t)
+
+sysnet_dns_name_resolve(free_t)
+corenet_all_recvfrom_unlabeled(free_t)
+
+allow free_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(free_t)
+corenet_tcp_sendrecv_generic_node(free_t)
+corenet_tcp_sendrecv_all_ports(free_t)
+corenet_tcp_bind_generic_node(free_t)
+
+gen_require(`
+    type free_port_t;
+')
+allow free_t free_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type free_port_t;
+')
+allow free_t free_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(free_t)
+
+files_read_etc_files(free_t)
+
+miscfiles_read_localization(free_t)
+
+sysnet_dns_name_resolve(free_t)
+
+allow free_t free_exec_t:file execute_no_trans;
+allow free_t self:process setsched;
+corecmd_exec_ls(free_t)
+corenet_tcp_connect_http_port(free_t)
+dev_read_urand(free_t)
+fs_getattr_xattr_fs(free_t)
+kernel_read_system_state(free_t)
