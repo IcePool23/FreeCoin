@@ -4,10 +4,8 @@
 
 
 <p align="center">
-Bruce Fenton<br>
-Tron Black<br>
-http://www.freecoin.org<br>
-3rd April 2018
+Artur Hodarcov<br>
+September 2024
 </p>
 <p align="center"><i>
 In the fictional world of Westeros, frees are used as messengers who carry statements of truth. Freecoin is a use-case focused blockchain designed to carry statements of truth about who owns what assets.
