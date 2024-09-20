@@ -4,8 +4,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RAVEN_VALIDATION_H
-#define RAVEN_VALIDATION_H
+//#ifndef RAVEN_VALIDATION_H
+//#define RAVEN_VALIDATION_H
+
+#ifndef FREECOIN_VALIDATION_H
+#define FREECOIN_VALIDATION_H
+
+
+//#ifndef FREE_VALIDATION_H
+//#define FREE_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/free-config.h"
@@ -613,6 +620,6 @@ bool IsMessagingActive(unsigned int nBlockNumber);
 bool IsRestrictedActive(unsigned int nBlockNumber);
 
 CAssetsCache* GetCurrentAssetCache();
-/** RVN END */
+/** FREE END */
 
-#endif // RAVEN_VALIDATION_H
+#endif // FREECOIN_VALIDATION_H

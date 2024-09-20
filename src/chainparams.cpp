@@ -667,22 +667,31 @@ if (fMineGenesisBlock) {
     return;  // Exit after mining
 }
 
+
+
 */
 
-
-
 	// Ensure the genesis block has no parent block
-	genesis.hashPrevBlock.SetNull();
+//	genesis.hashPrevBlock.SetNull();
 	// Hardcode the mined genesis block values
-	genesis = CreateGenesisBlock(1725667200, 1, 0x207fffff, 1, 50 * COIN);
+//	genesis = CreateGenesisBlock(1725667200, 1, 0x207fffff, 1, 50 * COIN);
 
 	// Use the KAWPOW hash function
-	consensus.hashGenesisBlock = genesis.GetKAWPOWHeaderHash();
+//	consensus.hashGenesisBlock = genesis.GetKAWPOWHeaderHash();
 
 	// Update assertions with the correct genesis block hash and Merkle root
+//	assert(consensus.hashGenesisBlock == uint256S("0x62eb42f3cc7ac29adbf72a29f44d584462ce9a5badf38abe83a6af570902e271"));
+//	assert(genesis.hashMerkleRoot == uint256S("0xa6fd779b45b3d852831b0cf77b680f2c1cb0492a508b14e6daeacacad9eab03a"));
+
+	genesis.hashPrevBlock.SetNull();  // Ensure this is set for the genesis block
+
+	// Set the genesis block parameters.
+	genesis = CreateGenesisBlock(1725667200, 1, 0x207fffff, 1, 50 * COIN);
+
+	// Verify that the calculated genesis block hash and merkle root match.
+	consensus.hashGenesisBlock = genesis.GetKAWPOWHeaderHash();
 	assert(consensus.hashGenesisBlock == uint256S("0x62eb42f3cc7ac29adbf72a29f44d584462ce9a5badf38abe83a6af570902e271"));
 	assert(genesis.hashMerkleRoot == uint256S("0xa6fd779b45b3d852831b0cf77b680f2c1cb0492a508b14e6daeacacad9eab03a"));
-
 
 
 

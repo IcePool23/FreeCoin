@@ -1288,6 +1288,34 @@ static bool WriteBlockToDisk(const CBlock& block, CDiskBlockPos& pos, const CMes
 bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
 {
     block.SetNull();
+    CAutoFile filein(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
+    if (filein.IsNull()) {
+        LogPrintf("ReadBlockFromDisk: Failed to open block file at %s\n", pos.ToString());
+        return error("ReadBlockFromDisk: OpenBlockFile failed for %s", pos.ToString());
+    }
+
+    try {
+        filein >> block;
+    }
+    catch (const std::exception& e) {
+        LogPrintf("ReadBlockFromDisk: Failed to deserialize block at %s - Error: %s\n", pos.ToString(), e.what());
+        return error("%s: Deserialize or I/O error - %s at %s", __func__, e.what(), pos.ToString());
+    }
+
+    if (!CheckProofOfWork(block.GetHash(), block.nBits, consensusParams)) {
+        LogPrintf("ReadBlockFromDisk: Proof of work error in block header at %s\n", pos.ToString());
+        return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
+    }
+
+    LogPrintf("ReadBlockFromDisk: Successfully read block at %s\n", pos.ToString());
+    return true;
+}
+
+
+/*
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
+{
+    block.SetNull();
 
     // Open history file to read
     CAutoFile filein(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
@@ -1318,6 +1346,7 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
                 pindex->ToString(), pindex->GetBlockPos().ToString());
     return true;
 }
+*/
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
