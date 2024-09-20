@@ -1,8 +1,6 @@
 Free Core integration/staging tree
 =====================================
 
-https://freecoin.org
-
 To see how to run Freecoin, please read the respective files in [the doc folder](doc)
 
 
@@ -25,7 +23,7 @@ Free Core is released under the terms of the MIT license. See [COPYING](COPYING)
 information or see https://opensource.org/licenses/MIT.
 
 
-**Blockchain Type:**
+**Economics:**
 
 Proof-of-Work (PoW) cryptocurrency based on the KawPoW mining algorithm.
 
