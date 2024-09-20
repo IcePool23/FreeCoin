@@ -24,6 +24,40 @@ License
 Free Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
+
+**Blockchain Type:**
+
+Proof-of-Work (PoW) cryptocurrency based on the KawPoW mining algorithm.
+
+Block Time: 1 minute block interval.
+
+Consensus Algorithm: KawPoW for GPU mining, ensuring ASIC resistance.
+
+Genesis Block:
+Hash: 62eb42f3cc7ac29adbf72a29f44d584462ce9a5badf38abe83a6af570902e271
+Nonce: 1
+Merkle Root: a6fd779b45b3d852831b0cf77b680f2c1cb0492a508b14e6daeacacad9eab03a
+
+Block Reward: 50 Freecoins per block, halving every 210,000 blocks (~4 years).
+
+Max Supply: 21 million Freecoins.
+
+Difficulty Adjustment: Uses Dark Gravity Wave (DGW) for difficulty adjustment.
+
+Wallet Compatibility: BerkeleyDB-based wallet system.
+
+RPC Configuration:
+RPC port: 8766
+Allows for local and remote JSON-RPC calls.
+
+Key Features:
+Asset support for token creation and messaging.
+Customizable asset issuance and restriction capabilities.
+
+Default Ports:
+P2P: 9876
+RPC: 8766
+
 Development Process
 -------------------
 
