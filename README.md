@@ -33,7 +33,9 @@ Consensus Algorithm: KawPoW for GPU mining, ensuring ASIC resistance.
 
 Genesis Block:
 Hash: 62eb42f3cc7ac29adbf72a29f44d584462ce9a5badf38abe83a6af570902e271
+
 Nonce: 1
+
 Merkle Root: a6fd779b45b3d852831b0cf77b680f2c1cb0492a508b14e6daeacacad9eab03a
 
 Block Reward: 50 Freecoins per block, halving every 210,000 blocks (~4 years).
