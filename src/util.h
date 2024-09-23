@@ -144,7 +144,10 @@ static inline void MarkUsed(const T &t, const Args &... args)
 }
 
 #ifdef USE_COVERAGE
-#define LogPrintf(...) do { MarkUsed(__VA_ARGS__); } while(0)
+#define LogPrintf(...) do { \
+    if (fDebug) \
+        fprintf(stderr, __VA_ARGS__); \
+} while(0)
 #define LogPrint(category, ...) do { MarkUsed(__VA_ARGS__); } while(0)
 #else
 #define LogPrintf(...) do { \
