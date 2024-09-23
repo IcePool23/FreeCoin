@@ -5,7 +5,6 @@
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "script/script.h"
-#include "script/standard.h"
 #include "uint256.h"
 #include "utilstrencodings.h"
 
@@ -26,7 +25,7 @@ int main() {
     // Create the genesis block
     CMutableTransaction txNew;
     txNew.nVersion = 1;
-    txNew.nTime = nTime;
+    // txNew.nTime = nTime; // Remove or comment out this line
     txNew.vin.resize(1);
     txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4)
         << std::vector<unsigned char>(
