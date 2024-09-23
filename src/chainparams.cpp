@@ -36,9 +36,9 @@ static CBlock CreateGenesisBlock(
 
     // Create the genesis block
     CBlock genesis;
-    genesis.nTime    = nTime;
-    genesis.nBits    = nBits;
-    genesis.nNonce   = nNonce;
+    genesis.nTime = 1695465600; // 23.09.2024, Unix timestamp
+    genesis.nBits = 0x1e0ffff0; // Reset to standard difficulty
+    genesis.nNonce = 0; // Set to 0 for mining
     genesis.nVersion = nVersion;
     genesis.vtx.push_back(MakeTransactionRef(std::move(txNew)));
     genesis.hashPrevBlock.SetNull();
@@ -103,12 +103,12 @@ public:
             50 * COIN   // genesisReward: 50 coins
         );
 
-        consensus.hashGenesisBlock = genesis.GetHash();
+    consensus.hashGenesisBlock = uint256S("0x0"); // Clear genesis block hash
         genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
 
         // Uncomment after finding the correct nonce and hash
         // assert(consensus.hashGenesisBlock == uint256S("0x..."));
-        // assert(genesis.hashMerkleRoot == uint256S("0x..."));
+    // assert(consensus.hashGenesisBlock == uint256S("0x0"));
 
         // No DNS seeds or fixed seeds
         vSeeds.clear();
